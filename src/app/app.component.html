@@ -1,1 +1,1 @@
-<app-qrscanner (qrCodeScanned)="handleQrCodeScanned($event)"></app-qrscanner>
+<app-qrscanner *ngIf="show" (qrCodeScanned)="handleQrCodeScanned($event)"></app-qrscanner>

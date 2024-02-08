@@ -20,19 +20,34 @@ export class QrscannerComponent implements OnInit, AfterViewInit {
     this.startScanning();
   }
 
+  openCamera(): void {
+    this.startScanning();
+  }
   ngOnInit(): void {
     this.startScanning();
   }
 
   async startScanning(): Promise<void> {
     try {
-      const result = await this.qrCodeService.decodeFromVideoElement(this.videoElement.nativeElement);
-      this.scannedCode = result;
-      this.qrCodeScanned.emit(result); // Emit the scanned QR code data
+      while (true) {
+        const result = await this.qrCodeService.decodeFromVideoElement(this.videoElement.nativeElement);
+        if (result) {
+          this.scannedCode = result;
+          console.log(result);
+
+          //  this.qrCodeScanned.emit(result);  Emit the scanned QR code data
+          break; // Exit the loop after successfully detecting a QR code
+        }
+      }
     } catch (error) {
-      console.error('QR code scanning error:', error);
+      // console.error('QR code scanning error:', error);
+      console.log('no');
+
     }
   }
 
+  stopCamera() {
+
+  }
 
 }

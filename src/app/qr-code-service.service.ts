@@ -21,7 +21,7 @@ export class QrCodeService {
         if (result) {
           resolve(result.getText());
         } else if (error) {
-          reject(error);
+          // reject(error);
         }
       });
     });

@@ -7,8 +7,10 @@ import { QrscannerComponent } from './qrscanner/qrscanner.component';
 })
 export class AppComponent {
   title = 'tessst';
+  show = true
   handleQrCodeScanned(qrCodeData: string): void {
     // Do something with the scanned QR code data
-    console.log('Scanned QR code:', qrCodeData);
+    console.log('Scanned QR code:');
+    this.show = false
   }
 }
